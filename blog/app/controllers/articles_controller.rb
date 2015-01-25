@@ -8,6 +8,10 @@ class ArticlesController < ApplicationController
 		@article = Article.new
 	end
 
+	def edit
+		@article = Article.find(params[:id])
+	end
+
 	def create
 		#render plain: params[:article].inspect
 		@article = Article.new(article_params)
@@ -18,6 +22,16 @@ class ArticlesController < ApplicationController
     		render 'new'
   		end
   		#Notice that inside the create action we use render instead of redirect_to when save returns false. The render method is used so that the @article object is passed back to the new template when it is rendered. This rendering is done within the same request as the form submission, whereas the redirect_to will tell the browser to issue another request.	
+	end
+
+	def update
+  		@article = Article.find(params[:id])
+ 
+  		if @article.update(article_params)
+    		redirect_to @article
+  		else
+    		render 'edit'
+  		end
 	end
 
 	def show
@@ -36,3 +50,4 @@ end
 #and destroy. You may use any order you choose, but keep in mind that these
 #are public methods; as mentioned earlier in this guide, they must be placed
 #before any private or protected method in the controller in order to work.
+

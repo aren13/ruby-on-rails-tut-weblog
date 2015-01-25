@@ -1,6 +1,6 @@
-<h1> New Article </h1>
-
-<%= form_for :article, url: articles_path do |f| %>
+<h1>Editing article</h1>
+ 
+<%= form_for :article, url: article_path(@article), method: :patch do |f| %>
  
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -32,6 +32,5 @@
  
 <% end %>
  
-<%= link_to 'Back', articles_path %>
-
-<!-- #Rails automatically wraps fields that contain an error with a div with class #field_with_errors. You can define a css rule to make them standout. -->
+<%= link_to 'Back', articles_path %> |
+<%= link_to 'Edit', edit_article_path(@article) %>
