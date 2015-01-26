@@ -3,11 +3,18 @@ Rails.application.routes.draw do
 
   resources :articles
 
+  #This creates comments as a nested resource within articles. 
+  #This is another part of capturing the hierarchical relationship that exists between articles and comments.
+  resources :articles do
+    resources :comments
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
