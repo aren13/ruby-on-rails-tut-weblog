@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
 	#Active Record Associations:: http://guides.rubyonrails.org/association_basics.html
-	has_many :comments 
+	has_many :comments, dependent: :destroy
 	validates :title, presence: true,
                     length: { minimum: 5 }
 
